@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,4 +36,38 @@ class Solution {
         }
         return ans;
     }
+}
+
+class Solution2 {
+    private boolean maxInCol(int arr[][], int col, int val) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i][col] > val)
+                return false;
+        }
+        return true;
+    }
+
+    public List<Integer> luckyNumbers(int[][] matrix) {
+        List<Integer> result = new ArrayList<Integer>();
+        for (int row = 0; row < matrix.length; row++) {
+            int minCol = minInRow(matrix, row);
+            int value = matrix[row][minCol];
+            if (maxInCol(matrix, minCol, value)) {
+                result.add(value);
+            }
+        }
+        return result;
+    }
+
+    private int minInRow(int matrix[][], int row) {
+        int minIndex = 0, min = matrix[row][minIndex];
+        for (int col = 1; col < matrix[row].length; col++) {
+            if (matrix[row][col] < min) {
+                min = matrix[row][col];
+                minIndex = col;
+            }
+        }
+        return minIndex;
+    }
+
 }
