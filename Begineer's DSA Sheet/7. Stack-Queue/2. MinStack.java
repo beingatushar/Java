@@ -1,25 +1,19 @@
 // https://leetcode.com/problems/min-stack/submissions/
-class Pair {
-    int data, minTillNow;
 
-    public Pair(int data, int minTillNow) {
-        this.data = data;
-        this.minTillNow = minTillNow;
-    }
-}
-
+// Time Complexity: O(1)
+// Space Complexity: O(n)
 class MinStack {
-    Stack<Pair> stack;
+    Stack<Pair<Integer, Integer>> stack;
 
     public MinStack() {
-        stack = new Stack<Pair>();
+        stack = new Stack<Pair<Integer, Integer>>();
     }
 
     public void push(int val) {
-        if (stack.isEmpty() || stack.peek().minTillNow > val) {
-            stack.push(new Pair(val, val));
+        if (stack.isEmpty() || stack.peek().getValue() > val) {
+            stack.push(new Pair<>(val, val));
         } else {
-            stack.push(new Pair(val, stack.peek().minTillNow));
+            stack.push(new Pair<>(val, stack.peek().getValue()));
         }
     }
 
@@ -28,11 +22,11 @@ class MinStack {
     }
 
     public int top() {
-        return stack.peek().data;
+        return stack.peek().getKey();
     }
 
     public int getMin() {
-        return stack.peek().minTillNow;
+        return stack.peek().getValue();
     }
 }
 
