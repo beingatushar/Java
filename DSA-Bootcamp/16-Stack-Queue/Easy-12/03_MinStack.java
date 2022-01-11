@@ -1,33 +1,33 @@
 import java.util.Stack;
 
 // https://leetcode.com/problems/min-stack/
-class MinStack {
-    Stack<Pair<Integer, Integer>> stack;
+// class MinStack {
+// Stack<Pair<Integer, Integer>> stack;
 
-    public MinStack() {
-        stack = new Stack<Pair<Integer, Integer>>();
-    }
+// public MinStack() {
+// stack = new Stack<Pair<Integer, Integer>>();
+// }
 
-    public void push(int val) {
-        if (stack.isEmpty() || stack.peek().getValue() > val) {
-            stack.push(new Pair<>(val, val));
-        } else {
-            stack.push(new Pair<>(val, stack.peek().getValue()));
-        }
-    }
+// public void push(int val) {
+// if (stack.isEmpty() || stack.peek().getValue() > val) {
+// stack.push(new Pair<>(val, val));
+// } else {
+// stack.push(new Pair<>(val, stack.peek().getValue()));
+// }
+// }
 
-    public void pop() {
-        stack.pop();
-    }
+// public void pop() {
+// stack.pop();
+// }
 
-    public int top() {
-        return stack.peek().getKey();
-    }
+// public int top() {
+// return stack.peek().getKey();
+// }
 
-    public int getMin() {
-        return stack.peek().getValue();
-    }
-}
+// public int getMin() {
+// return stack.peek().getValue();
+// }
+// }
 
 /**
  * Your MinStack object will be instantiated and called as such:
